@@ -33,9 +33,9 @@ export class TasksController {
 
   @Post()
   async createTask(@Body() taskData: Task): Promise<Task | any> {
-    const { title, description, student, date } = taskData;
+    const { title, description, student, id_student, date } = taskData;
 
-    if (!title || !description || !student || !date) {
+    if (!title || !description || !student || !date || !id_student) {
       return {
         statusCode: 400,
         message: 'Faltan datos obligatorios',
@@ -49,6 +49,7 @@ export class TasksController {
       completed,
       student,
       date,
+      id_student,
     );
   }
 

@@ -35,9 +35,9 @@ export class UsersController {
 
   @Post()
   async createUser(@Body() userData: User): Promise<User | any> {
-    const { name, isActive, password, course, email } = userData;
+    const { name, isActive, password, course, email, type } = userData;
 
-    if (!name || !isActive || !password || !email) {
+    if (!name || !isActive || !password || !email || !type || !course) {
       return {
         statusCode: 400,
         message: 'Se debe proporcionar todos los datos',
@@ -50,6 +50,7 @@ export class UsersController {
       password,
       course,
       email,
+      type,
     );
   }
 
@@ -115,6 +116,6 @@ export class UsersController {
     // Generar y devolver un token de acceso (aquí debes implementar tu lógica de autenticación/autorización)
     const accessToken = await this.usersService.generateAccessToken(user);
 
-    return { accessToken };
+    return { accessToken, user };
   }
 }

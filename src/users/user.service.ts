@@ -19,6 +19,7 @@ export class UsersService {
     password: string,
     course: string,
     email: string,
+    type: string,
   ): Promise<User> {
     const newUser = new this.userModel({
       name,
@@ -26,6 +27,7 @@ export class UsersService {
       isActive,
       password,
       course,
+      type,
     });
     return newUser.save();
   }

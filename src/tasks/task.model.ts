@@ -8,6 +8,7 @@ export interface Task extends Document {
   completed: boolean;
   student: string;
   date: string;
+  id_student: string;
 }
 
 export const TaskSchema = new Schema({
@@ -16,4 +17,5 @@ export const TaskSchema = new Schema({
   completed: { type: Boolean, default: false },
   student: { type: String, required: true },
   date: { type: String, required: true },
+  id_student: { type: String, required: true },
 });

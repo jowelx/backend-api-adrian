@@ -21,6 +21,7 @@ export class TasksService {
     completed: boolean,
     student: string,
     date: string,
+    id_student: string,
   ): Promise<Task> {
     const task = new this.taskModel({
       title,
@@ -28,6 +29,7 @@ export class TasksService {
       completed,
       student,
       date,
+      id_student,
     });
     return task.save();
   }

@@ -7,6 +7,7 @@ export interface User extends Document {
   password: string;
   course: string;
   email: string;
+  type: string;
 }
 
 export const UserSchema = new Schema<User>({
@@ -15,6 +16,7 @@ export const UserSchema = new Schema<User>({
   password: { type: String, required: true },
   course: { type: String, required: true },
   email: { type: String, required: true },
+  type: { type: String, required: true },
 });
 UserSchema.pre<User>('save', async function (next) {
   if (!this.isModified('password')) {
