@@ -9,6 +9,7 @@ export interface Task extends Document {
   student: string;
   date: string;
   id_student: string;
+  file: any;
 }
 
 export const TaskSchema = new Schema({
@@ -18,4 +19,5 @@ export const TaskSchema = new Schema({
   student: { type: String, required: true },
   date: { type: String, required: true },
   id_student: { type: String, required: true },
+  file: { type: String, require: true },
 });

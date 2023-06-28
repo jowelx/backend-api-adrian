@@ -22,6 +22,7 @@ export class TasksService {
     student: string,
     date: string,
     id_student: string,
+    fileUrl: any,
   ): Promise<Task> {
     const task = new this.taskModel({
       title,
@@ -30,22 +31,22 @@ export class TasksService {
       student,
       date,
       id_student,
+      file: fileUrl,
     });
     return task.save();
   }
 
   async updateTask(
     id: string,
-    title: string,
-    description: string,
     completed: boolean,
-    student: string,
     date: string,
   ): Promise<Task> {
+    const actualTask: any = await this.taskModel.findById(id);
+    const completedResult = !completed ? actualTask._completed : completed;
     return this.taskModel
       .findByIdAndUpdate(
         id,
-        { title, description, completed, student, date },
+        { completed: completedResult, date },
         { new: true },
       )
       .exec();
